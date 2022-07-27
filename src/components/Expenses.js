@@ -1,4 +1,5 @@
 import "./Expenses.css";
+import Card from "./Card";
 import ExpenseItem from "./ExpenseItem";
 
 //can destructure to clean things up
@@ -17,7 +18,7 @@ function Expenses({ items }) {
       );
     });
   };
-  return <div className="expenses">{renderCards()}</div>;
+  return <Card className="expenses">{renderCards()}</Card>;
 }
 
 export default Expenses;

@@ -1,4 +1,5 @@
 import ExpenseDate from "./ExpenseDate";
+import Card from "./Card";
 import "./ExpenseItem.css";
 
 function ExpenseItem({ index, date, title, amount }) {
@@ -6,13 +7,13 @@ function ExpenseItem({ index, date, title, amount }) {
 
   //you can only have one root element here per return statement, per JSX code snippet
   return (
-    <div className={oddEven}>
+    <Card className={oddEven}>
       <ExpenseDate date={date} />
       <div className="expense-item__description">
         <h2>{title}</h2>
         <div className="expense-item__price">${amount}</div>
       </div>
-    </div>
+    </Card>
   );
 }
 
