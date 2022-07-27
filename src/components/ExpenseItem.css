@@ -54,3 +54,7 @@
     padding: 0.5rem 1.5rem;
   }
 }
+
+.odd {
+  background-color: rgb(110, 6, 6);
+}

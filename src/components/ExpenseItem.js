@@ -1,16 +1,16 @@
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
-function ExpenseItem(props) {
-  console.log(props);
+function ExpenseItem({ index, date, title, amount }) {
+  const oddEven = `expense-item ${index % 2 === 0 ? "even" : "odd"}`;
 
   //you can only have one root element here per return statement, per JSX code snippet
   return (
-    <div className="expense-item">
-      <ExpenseDate date={props.date} />
+    <div className={oddEven}>
+      <ExpenseDate date={date} />
       <div className="expense-item__description">
-        <h2>{props.title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
+        <h2>{title}</h2>
+        <div className="expense-item__price">${amount}</div>
       </div>
     </div>
   );
