@@ -1,3 +1,4 @@
+import React from "react";
 //index.js is the first file to be executed here
 import ReactDOM from "react-dom/client";
 
