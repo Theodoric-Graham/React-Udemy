@@ -3,7 +3,7 @@ import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import "./ExpenseItem.css";
 
-function ExpenseItem({ index, date, title, amount }) {
+const ExpenseItem = ({ index, date, title, amount }) => {
   const oddEven = `expense-item ${index % 2 === 0 ? "even" : "odd"}`;
 
   //you can only have one root element here per return statement, per JSX code snippet
@@ -16,6 +16,6 @@ function ExpenseItem({ index, date, title, amount }) {
       </div>
     </Card>
   );
-}
+};
 
 export default ExpenseItem;

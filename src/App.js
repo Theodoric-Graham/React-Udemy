@@ -3,7 +3,7 @@ import Expenses from "./components/Expenses/Expenses";
 
 //our own custom components must start with a capital letter when in JSX so
 //react can detect it as a custom component
-function App() {
+const App = () => {
   const items = [
     {
       id: "e1",
@@ -39,6 +39,6 @@ function App() {
       <Expenses items={items} />
     </div>
   );
-}
+};
 
 export default App;

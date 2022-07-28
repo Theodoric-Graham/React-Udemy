@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 
 //can destructure to clean things up
-function Expenses({ items }) {
+const Expenses = ({ items }) => {
   console.log(items);
   const renderCards = () => {
     return items.map((expenseItem, index) => {
@@ -20,6 +20,6 @@ function Expenses({ items }) {
     });
   };
   return <Card className="expenses">{renderCards()}</Card>;
-}
+};
 
 export default Expenses;
