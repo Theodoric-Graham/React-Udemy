@@ -1,5 +1,5 @@
 import React from "react";
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
 
 //our own custom components must start with a capital letter when in JSX so
 //react can detect it as a custom component
