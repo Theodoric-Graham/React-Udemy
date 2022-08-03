@@ -9,7 +9,10 @@ const ExpenseItem = ({ index, date, title, amount }) => {
   //assign a new value to that variable, as an array where the first value is
   //the variable itself, and the second is the updating function
   const [titleValue, setTitleValue] = useState(title);
+  console.log("ExpenseItem evaluated by React");
 
+  //when we call the state update function, the component function will be executed again
+  //state is on a per component instance basis
   const clickHandler = () => {
     setTitleValue("Updated!");
     console.log(titleValue);
