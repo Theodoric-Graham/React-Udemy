@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import "./ExpenseItem.css";
 
 const ExpenseItem = ({ index, date, title, amount }) => {
+  //react hook, we need an initial value in this case 'title', a variable is
+  //created, useState returns the variable and a function that you can call to
+  //assign a new value to that variable, as an array where the first value is
+  //the variable itself, and the second is the updating function
+  const [titleValue, setTitleValue] = useState(title);
+
   const clickHandler = () => {
-    title = "Updated!";
-    console.log(title);
+    setTitleValue("Updated!");
+    console.log(titleValue);
   };
   const oddEven = `expense-item ${index % 2 === 0 ? "even" : "odd"}`;
 
@@ -16,7 +22,7 @@ const ExpenseItem = ({ index, date, title, amount }) => {
     <Card className={oddEven}>
       <ExpenseDate date={date} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
+        <h2>{titleValue}</h2>
         <div className="expense-item__price">${amount}</div>
       </div>
 
