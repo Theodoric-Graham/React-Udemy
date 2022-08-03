@@ -5,7 +5,8 @@ import "./ExpenseItem.css";
 
 const ExpenseItem = ({ index, date, title, amount }) => {
   const clickHandler = () => {
-    console.log("clicked!!");
+    title = "Updated!";
+    console.log(title);
   };
   const oddEven = `expense-item ${index % 2 === 0 ? "even" : "odd"}`;
 
