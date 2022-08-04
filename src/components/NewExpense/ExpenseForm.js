@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
+  //saves multiple states
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -47,15 +48,19 @@ const ExpenseForm = () => {
 
   //we have access to the event automatically
   const submitHandler = (event) => {
+    //stops the page from reloading
     event.preventDefault();
 
+    //creates an object with the input data
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate + "T00:00:00"),
     };
 
-    console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
+
+    //resets the state back to an empty string
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
