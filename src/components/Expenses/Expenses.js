@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Expenses.css";
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
+import ExpensesFilter from "./ExpensesFilter";
 
 //can destructure to clean things up
 const Expenses = ({ items }) => {
+  const [enteredDate, setEnteredDate] = useState("2020");
+
+  const onSaveExpenseYearHandler = (data) => {
+    console.log(data);
+    setEnteredDate(data);
+  };
+
   console.log(items);
   const renderCards = () => {
     return items.map((expenseItem, index) => {
@@ -19,7 +27,17 @@ const Expenses = ({ items }) => {
       );
     });
   };
-  return <Card className="expenses">{renderCards()}</Card>;
+  return (
+    <div>
+      <Card className="expenses">
+        <ExpensesFilter
+          onSaveExpenseYear={onSaveExpenseYearHandler}
+          selected={enteredDate}
+        />
+        {renderCards()}
+      </Card>
+    </div>
+  );
 };
 
 export default Expenses;
