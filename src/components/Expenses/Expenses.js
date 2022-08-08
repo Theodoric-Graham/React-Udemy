@@ -13,19 +13,21 @@ const Expenses = ({ items }) => {
     setEnteredDate(data);
   };
 
-  // const renderCards = () => {
-  //   return items.map((expenseItem, index) => {
-  //     return (
-  //       <ExpenseItem
-  //         key={index}
-  //         index={index}
-  //         title={expenseItem.title}
-  //         amount={expenseItem.amount}
-  //         date={expenseItem.date}
-  //       />
-  //     );
-  //   });
-  // };
+  const renderCards = () => {
+    return items.map((expenseItem) => {
+      //react renders the new item as the last item, then updates all items and
+      //replaces their content so that it matches the order of the items in the array
+      //always use a key when mapping a list of items
+      return (
+        <ExpenseItem
+          key={expenseItem.id}
+          title={expenseItem.title}
+          amount={expenseItem.amount}
+          date={expenseItem.date}
+        />
+      );
+    });
+  };
   return (
     <div>
       <Card className="expenses">
@@ -33,13 +35,7 @@ const Expenses = ({ items }) => {
           onSaveExpenseYear={onSaveExpenseYearHandler}
           selected={enteredDate}
         />
-        {items.map((expense) => (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {renderCards()}
       </Card>
     </div>
   );
