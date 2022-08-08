@@ -13,20 +13,19 @@ const Expenses = ({ items }) => {
     setEnteredDate(data);
   };
 
-  console.log(items);
-  const renderCards = () => {
-    return items.map((expenseItem, index) => {
-      return (
-        <ExpenseItem
-          key={index}
-          index={index}
-          title={expenseItem.title}
-          amount={expenseItem.amount}
-          date={expenseItem.date}
-        />
-      );
-    });
-  };
+  // const renderCards = () => {
+  //   return items.map((expenseItem, index) => {
+  //     return (
+  //       <ExpenseItem
+  //         key={index}
+  //         index={index}
+  //         title={expenseItem.title}
+  //         amount={expenseItem.amount}
+  //         date={expenseItem.date}
+  //       />
+  //     );
+  //   });
+  // };
   return (
     <div>
       <Card className="expenses">
@@ -34,7 +33,13 @@ const Expenses = ({ items }) => {
           onSaveExpenseYear={onSaveExpenseYearHandler}
           selected={enteredDate}
         />
-        {renderCards()}
+        {items.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
       </Card>
     </div>
   );
