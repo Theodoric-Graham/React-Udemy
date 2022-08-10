@@ -17,13 +17,15 @@ const ExpenseItem = (props) => {
   //you can only have one root element here per return statement, per JSX code snippet
   //we dont need to call 'clickHandler' we just need to point at it, regardless of how its defined
   return (
-    <Card className={oddEven}>
-      <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h2>{props.title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
-      </div>
-    </Card>
+    <li>
+      <Card className={oddEven}>
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{props.title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
+      </Card>
+    </li>
   );
 };
 
