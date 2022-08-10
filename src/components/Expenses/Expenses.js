@@ -23,6 +23,7 @@ const Expenses = ({ items }) => {
     return filteredExpenses.map((expenseItem) => {
       //react renders the new item as the last item, then updates all items and
       //replaces their content so that it matches the order of the items in the array
+      //this is not good
       //always use a key when mapping a list of items
       return (
         <ExpenseItem
@@ -34,6 +35,16 @@ const Expenses = ({ items }) => {
       );
     });
   };
+
+  //can assign html to a variable
+  let expensesContent = <p>No expenses found.</p>;
+
+  //changing the variable based on the length of the array
+  if (filteredExpenses.length > 0) {
+    expensesContent = renderCards();
+  }
+
+  //conditionally checking if the filtered expenses have data
   return (
     <div>
       <Card className="expenses">
@@ -41,7 +52,7 @@ const Expenses = ({ items }) => {
           onSaveExpenseYear={onSaveExpenseYearHandler}
           selected={enteredDate}
         />
-        {renderCards()}
+        {expensesContent}
       </Card>
     </div>
   );
