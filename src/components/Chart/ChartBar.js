@@ -1,0 +1,25 @@
+import React from "react";
+import "./ChartBar.css";
+
+const ChartBar = (props) => {
+  let barfillHeight = "0%";
+
+  //this will give us a percentage between 0 and 100 that should be filled
+  if (props.max > 0) {
+    barfillHeight = Math.round((props.value / props.maxValue) * 100) + "%";
+  }
+
+  return (
+    <div className="chart-bar">
+      <div className="chart-bar__inner">
+        <div
+          className="chart-bar__fill"
+          style={{ height: barfillHeight }}
+        ></div>
+      </div>
+      <div className="chart-bar__label">{props.label}</div>
+    </div>
+  );
+};
+
+export default ChartBar;
