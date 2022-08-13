@@ -4,13 +4,14 @@ import "./ExpensesList.css";
 
 const ExpensesList = (props) => {
   const renderCards = () => {
-    return props.items.map((expenseItem) => {
+    return props.items.map((expenseItem, index) => {
       //react renders the new item as the last item, then updates all items and
       //replaces their content so that it matches the order of the items in the array
       //this is not good
       //always use a key when mapping a list of items
       return (
         <ExpenseItem
+          index={index}
           key={expenseItem.id}
           title={expenseItem.title}
           amount={expenseItem.amount}
