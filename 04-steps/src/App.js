@@ -9,6 +9,10 @@ const messages = [
 export default function App() {
   // Add a new state variable
   const [step, setStep] = useState(1);
+  const [test, setTest] = useState({ name: "Theo" });
+
+  // do not do this
+  // let [step, setStep] = useState(1);
 
   // Use that variable in the code in the JSX
 
@@ -20,6 +24,14 @@ export default function App() {
 
   function handleNext() {
     if (step < 3) setStep(step + 1);
+
+    // setTest({ name: "Fred" });
+
+    // Bad Practice
+    // test.name = "Fred";
+
+    // Do not do this
+    // step = step + 1;
   }
 
   return (
@@ -32,6 +44,7 @@ export default function App() {
 
       <p className="message">
         Step {step}: {messages[step - 1]}
+        {/* {test.name} */}
       </p>
       <div className="buttons">
         <button
