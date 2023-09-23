@@ -3,14 +3,23 @@ import { useState } from "react";
 export default function App() {
   return (
     <div className="App">
-      <Step />
       <Count />
     </div>
   );
 }
 
-function Step() {
+function Count() {
+  const DATE_OPTIONS = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  const date = new Date().toLocaleDateString("en-US", DATE_OPTIONS);
+
+  const [count, setCount] = useState(0);
   const [step, setStep] = useState(0);
+  const [curDate, setCurDate] = useState(date);
 
   function decreaseStep() {
     if (step > 0) setStep((s) => s - 1);
@@ -20,31 +29,26 @@ function Step() {
     setStep((s) => s + 1);
   }
 
-  return (
-    <div>
-      <button onClick={decreaseStep}>-</button>
-      <p>Step: {step}</p>
-      <button onClick={increaseStep}>+</button>
-    </div>
-  );
-}
-
-function Count() {
-  const [count, setCount] = useState(0);
-
   function decreaseCount() {
     if (count > 0) setCount((c) => c - 1);
   }
 
   function increaseCount() {
-    setCount((c) => c + 1);
+    setCount((c) => c + step);
   }
 
   return (
     <div>
+      <button onClick={decreaseStep}>-</button>
+      <p>Step: {step}</p>
+      <button onClick={increaseStep}>+</button>
+      <br></br>
       <button onClick={decreaseCount}>-</button>
       <p>Count: {count}</p>
       <button onClick={increaseCount}>+</button>
+      <p>
+        {count} days from today is {curDate}
+      </p>
     </div>
   );
 }
