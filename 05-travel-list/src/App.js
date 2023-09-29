@@ -12,6 +12,7 @@ export default function App() {
 function Logo() {
   return <h1>🌴 Far Away 💼</h1>;
 }
+
 function Form() {
   return (
     <div className="add-form">
@@ -19,9 +20,11 @@ function Form() {
     </div>
   );
 }
+
 function PackingList() {
   return <div className="list">LIST</div>;
 }
+
 function Stats() {
   return (
     <footer className="stats">
