@@ -22,6 +22,7 @@ function Form() {
   return (
     <div className="add-form">
       <h3>What do you need for your 😍 trip??</h3>
+      <p>not a full commit sorry</p>
     </div>
   );
 }
