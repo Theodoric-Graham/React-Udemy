@@ -23,6 +23,7 @@ function Form() {
     <div className="add-form">
       <h3>What do you need for your 😍 trip??</h3>
       <p>not a full commit sorry</p>
+      <h2>not a full commit sorry</h2>
     </div>
   );
 }
