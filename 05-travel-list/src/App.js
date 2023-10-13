@@ -22,6 +22,7 @@ function Logo() {
 }
 
 function Form() {
+  //state
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -34,7 +35,7 @@ function Form() {
     console.log(newItem);
 
     setDescription("");
-    setQuantity(1)
+    setQuantity(1);
   }
 
   return (
