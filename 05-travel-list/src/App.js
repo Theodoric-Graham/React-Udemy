@@ -25,6 +25,7 @@ function Form() {
   //state
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [list, setList] = useState(initialItems);
 
   function handleSubmit(e) {
     e.preventDefault();
