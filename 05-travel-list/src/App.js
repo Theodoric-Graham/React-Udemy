@@ -37,6 +37,7 @@ function Form() {
 
     setDescription("");
     setQuantity(1);
+    setList("");
   }
 
   return (
