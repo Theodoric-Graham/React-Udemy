@@ -26,6 +26,7 @@ function Form() {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [list, setList] = useState(initialItems);
+  const [button, setButton] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,6 +39,7 @@ function Form() {
     setDescription("");
     setQuantity(1);
     setList("");
+    setButton(true);
   }
 
   return (
