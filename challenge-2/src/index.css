@@ -12,7 +12,12 @@ code {
     monospace;
 }
 
-.slider {
-  display: block;
+.container {
+  /* display: block; */
   margin: auto;
+  margin-top: 1rem;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

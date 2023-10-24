@@ -15,13 +15,13 @@ function Counter() {
   const date = new Date("june 21 2027");
   date.setDate(date.getDate() + count);
 
-  function decreaseStep() {
-    setStep((s) => s - 1);
-  }
+  // function decreaseStep() {
+  //   setStep((s) => s - 1);
+  // }
 
-  function increaseStep() {
-    setStep((s) => s + 1);
-  }
+  // function increaseStep() {
+  //   setStep((s) => s + 1);
+  // }
 
   function decreaseCount() {
     setCount((c) => c - step);
@@ -31,30 +31,56 @@ function Counter() {
     setCount((c) => c + step);
   }
 
-  return (
-    <div>
-      <input className="slider" type="range" min="0" max="10"></input>
-      <label>0</label>
+  function sliderCallback(e) {
+    setStep(+e.target.value);
+  }
 
-      <div>
+  function inputHandler(e) {
+    setCount(+e.target.value);
+  }
+
+  function resetHandler() {
+    setStep(1);
+    setCount(0);
+  }
+
+  return (
+    <div className="container">
+      <div className="slider">
+        <input
+          onChange={sliderCallback}
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+        ></input>
+        <label>{step}</label>
+      </div>
+
+      <div className="count">
         {/* <button onClick={decreaseStep}>-</button>
         <p>Step: {step}</p>
         <button onClick={increaseStep}>+</button>
         <br></br> */}
         <button onClick={decreaseCount}>-</button>
-        <p>Count: {count}</p>
+        <input onChange={inputHandler} type="number" value={count}></input>
         <button onClick={increaseCount}>+</button>
-        <p>
-          <span>
-            {count === 0
-              ? "Today is "
-              : count > 0
-              ? `${count} days from today is `
-              : `${Math.abs(count)} days ago was `}
-          </span>
-          <span>{date.toDateString()}</span>
-        </p>
       </div>
+      <p>
+        <span>
+          {count === 0
+            ? "Today is "
+            : count > 0
+            ? `${count} days from today is `
+            : `${Math.abs(count)} days ago was `}
+        </span>
+        <span>{date.toDateString()}</span>
+      </p>
+      {count !== 0 || step !== 1 ? (
+        <button onClick={resetHandler}>Reset</button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
