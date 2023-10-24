@@ -33,23 +33,28 @@ function Counter() {
 
   return (
     <div>
-      <button onClick={decreaseStep}>-</button>
-      <p>Step: {step}</p>
-      <button onClick={increaseStep}>+</button>
-      <br></br>
-      <button onClick={decreaseCount}>-</button>
-      <p>Count: {count}</p>
-      <button onClick={increaseCount}>+</button>
-      <p>
-        <span>
-          {count === 0
-            ? "Today is"
-            : count > 0
-            ? `${count} days from today is `
-            : `${Math.abs(count)} days ago was `}
-        </span>
-        <span>{date.toDateString()}</span>
-      </p>
+      <input className="slider" type="range" min="0" max="10"></input>
+      <label>0</label>
+
+      <div>
+        {/* <button onClick={decreaseStep}>-</button>
+        <p>Step: {step}</p>
+        <button onClick={increaseStep}>+</button>
+        <br></br> */}
+        <button onClick={decreaseCount}>-</button>
+        <p>Count: {count}</p>
+        <button onClick={increaseCount}>+</button>
+        <p>
+          <span>
+            {count === 0
+              ? "Today is "
+              : count > 0
+              ? `${count} days from today is `
+              : `${Math.abs(count)} days ago was `}
+          </span>
+          <span>{date.toDateString()}</span>
+        </p>
+      </div>
     </div>
   );
 }
