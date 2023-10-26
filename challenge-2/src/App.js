@@ -31,13 +31,9 @@ function Counter() {
     setCount((c) => c + step);
   }
 
-  function sliderCallback(e) {
-    setStep(+e.target.value);
-  }
-
-  function inputHandler(e) {
-    setCount(+e.target.value);
-  }
+  // function sliderCallback(e) {
+  //   setStep(+e.target.value);
+  // }
 
   function resetHandler() {
     setStep(1);
@@ -48,7 +44,7 @@ function Counter() {
     <div className="container">
       <div className="slider">
         <input
-          onChange={sliderCallback}
+          onChange={(e) => setStep(Number(e.target.value))}
           type="range"
           min="0"
           max="10"
@@ -63,7 +59,11 @@ function Counter() {
         <button onClick={increaseStep}>+</button>
         <br></br> */}
         <button onClick={decreaseCount}>-</button>
-        <input onChange={inputHandler} type="number" value={count}></input>
+        <input
+          onChange={(e) => setCount(Number(e.target.value))}
+          type="number"
+          value={count}
+        ></input>
         <button onClick={increaseCount}>+</button>
       </div>
       <p>
