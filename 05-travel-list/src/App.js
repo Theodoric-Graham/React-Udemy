@@ -40,6 +40,7 @@ function Form({ onAddItems }) {
     const newItem = { description, quantity, packed: false, id: Date.now() };
     console.log(newItem);
 
+    //prop name
     onAddItems(newItem);
 
     setDescription("");
