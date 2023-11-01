@@ -43,7 +43,9 @@ function Form({ onAddItems }) {
     //prop name
     onAddItems(newItem);
 
+    //CLEAR INPUT
     setDescription("");
+    //reset
     setQuantity(1);
   }
 
