@@ -32,6 +32,7 @@ function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
 
+  //callback function
   function handleSubmit(e) {
     e.preventDefault();
 
