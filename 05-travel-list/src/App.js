@@ -10,6 +10,7 @@ const initialItems = [
 export default function App() {
   const [items, setItems] = useState([]);
 
+  //spread existing items and add new one
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
   }
