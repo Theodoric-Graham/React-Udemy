@@ -1,6 +1,7 @@
 //need to import
 import { useState } from "react";
 
+//initial object we want to work with
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
   { id: 2, description: "Socks", quantity: 12, packed: false },
