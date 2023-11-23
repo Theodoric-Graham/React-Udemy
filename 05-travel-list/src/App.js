@@ -10,6 +10,10 @@ const initialItems = [
   { id: 3, description: "Wallet", quantity: 1, packed: false },
   { id: 3, description: "Keys", quantity: 1, packed: false },
   { id: 3, description: "Phone", quantity: 1, packed: true },
+  { id: 3, description: "Mouse", quantity: 1, packed: true },
+  { id: 3, description: "Keyboard", quantity: 1, packed: true },
+  { id: 3, description: "Mouse Pad", quantity: 1, packed: true },
+  
 ];
 
 export default function App() {
