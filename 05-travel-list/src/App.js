@@ -13,11 +13,11 @@ const initialItems = [
   { id: 3, description: "Mouse", quantity: 1, packed: true },
   { id: 3, description: "Keyboard", quantity: 1, packed: true },
   { id: 3, description: "Mouse Pad", quantity: 1, packed: true },
-  
 ];
 
 export default function App() {
   const [items, setItems] = useState([]);
+  const [data, setData] = useState([]);
 
   //spread existing items and add new one
   function handleAddItems(item) {
