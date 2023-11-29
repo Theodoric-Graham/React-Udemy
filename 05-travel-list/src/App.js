@@ -24,6 +24,10 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handleAddData(data) {
+    setItems((newData) => [...newData, data]);
+  }
+
   return (
     <div className="app">
       <Logo />
