@@ -33,6 +33,7 @@ export default function App() {
       <Logo />
       <Form onAddItems={handleAddItems} />
       <PackingList items={items} />
+      <NewList />
       <Stats />
     </div>
   );
