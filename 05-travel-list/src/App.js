@@ -34,6 +34,7 @@ export default function App() {
       <Form onAddItems={handleAddItems} />
       <PackingList items={items} />
       <NewList />
+      <SecondList />
       <Stats />
     </div>
   );
