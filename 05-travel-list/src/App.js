@@ -41,7 +41,12 @@ export default function App() {
 }
 
 function Logo() {
-  return <h1>🌴 Far Away 💼</h1>;
+  return (
+    <div>
+      <h1>🌴 Far Away 💼</h1>
+      <h2>Traveling Time</h2>
+    </div>
+  );
 }
 
 function Form({ onAddItems }) {
