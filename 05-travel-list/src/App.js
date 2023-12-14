@@ -45,6 +45,7 @@ function Logo() {
     <div>
       <h1>🌴 Far Away 💼</h1>
       <h2>Traveling Time</h2>
+      <h3>Party Time</h3>
     </div>
   );
 }
