@@ -1,20 +1,6 @@
 //need to import
 import { useState } from "react";
 
-//initial object we want to work with
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
-  { id: 3, description: "Charger", quantity: 1, packed: true },
-  // { id: 4, description: "Laptop", quantity: 1, packed: true },
-  // { id: 5, description: "Wallet", quantity: 1, packed: false },
-  // { id: 6, description: "Keys", quantity: 1, packed: false },
-  // { id: 7, description: "Phone", quantity: 1, packed: true },
-  // { id: 8, description: "Mouse", quantity: 1, packed: true },
-  // { id: 9, description: "Keyboard", quantity: 1, packed: true },
-  // { id: 10, description: "Mouse Pad", quantity: 1, packed: true },
-];
-
 export default function App() {
   const [items, setItems] = useState([]);
   // const [data, setData] = useState([]);
@@ -24,30 +10,23 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
-  // function handleAddData(data) {
-  //   setItems((newData) => [...newData, data]);
-  // }
+  function handleDeleteItem(id) {
+    //filters over the items array, checking the id
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
 
   return (
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} />
-      <NewList />
-      <SecondList />
+      <PackingList items={items} onDeleteItem={handleDeleteItem} />
       <Stats />
     </div>
   );
 }
 
 function Logo() {
-  return (
-    <div>
-      <h1>🌴 Far Away 💼</h1>
-      <h2>Traveling Time</h2>
-      <h3>Party Time</h3>
-    </div>
-  );
+  return <h1>🌴 Far Away 💼</h1>;
 }
 
 function Form({ onAddItems }) {
@@ -95,25 +74,25 @@ function Form({ onAddItems }) {
   );
 }
 
-function PackingList({ items }) {
+function PackingList({ items, onDeleteItem }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => (
-          <Item item={item} key={item.id} />
+          <Item item={item} key={item.id} onDeleteItem={onDeleteItem} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItem }) {
   return (
     <li>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 }
