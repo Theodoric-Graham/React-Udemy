@@ -103,6 +103,7 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
   );
 }
 
+//PASSING IN THE DELETE PROP
 function Item({ item, onDeleteItem, onToggleItem }) {
   return (
     <li>
