@@ -52,7 +52,9 @@ function Form({ onAddItems }) {
     //clause
     if (!description) return;
 
+    //setting id to date to avoid error
     const newItem = { description, quantity, packed: false, id: Date.now() };
+
     console.log(newItem);
 
     //prop name
@@ -86,10 +88,28 @@ function Form({ onAddItems }) {
 }
 
 function PackingList({ items, onDeleteItem, onToggleItem }) {
+  const [sortBy, setSortBy] = useState("input");
+
+  //use derived state
+  let sortedItems;
+
+  if (sortBy === "input") sortedItems = items;
+
+  // with slice we take a copy of the array and does not mutate items
+  if (sortBy === "description")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => a.description.localeCompare(b.description));
+
+  if (sortBy === "packed")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => Number(a.packed) - Number(b.packed));
+
   return (
     <div className="list">
       <ul>
-        {items.map((item) => (
+        {sortedItems.map((item) => (
           <Item
             item={item}
             key={item.id}
@@ -98,6 +118,13 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
           />
         ))}
       </ul>
+      <div className="actions">
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="input">Sort by input order</option>
+          <option value="description">Sort by description</option>
+          <option value="packed">Sort by packed</option>
+        </select>
+      </div>
     </div>
   );
 }
