@@ -1,60 +1,87 @@
-import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
   return (
     <div>
-      <Bill />
-      <Service />
-      <FriendService />
-      <Total />
+      <TipCalculator />
     </div>
   );
 }
 
-function Bill() {
+function TipCalculator() {
+  const [bill, setBill] = useState("");
+  const [percentage1, setPercentage1] = useState(0);
+  const [percentage2, setPercentage2] = useState(0);
+
+  const tip = percentage1 + percentage2;
+
+  return (
+    <div>
+      <BillInput bill={bill} onSetBill={setBill} />
+      <SelectPercentage percentage={percentage1} onSelect={setPercentage1}>
+        <p>How did you like the service?</p>
+      </SelectPercentage>
+      <SelectPercentage percentage={percentage2} onSelect={setPercentage2}>
+        <p>How did your friend like the service?</p>
+      </SelectPercentage>
+      <Total bill={bill} tip={tip} />
+    </div>
+  );
+}
+
+function BillInput({ bill, onSetBill }) {
   return (
     <div>
       <p>How much was the bill?</p>
-      <input></input>
+      <input
+        type="text"
+        placeholder="Bill value"
+        value={bill}
+        onChange={(e) => onSetBill(Number(e.target.value))}
+      ></input>
     </div>
   );
 }
 
-function Service() {
+function SelectPercentage({ children, percentage, onSelect }) {
   return (
     <div>
-      <p>How did you like the service?</p>
-      <label for="service-select"></label>
-      <select name="pets" id="service-select">
-        <option value="dissatisfied">Dissatisfied (0%)</option>
-        <option value="okay">It was okay (5%)</option>
-        <option value="good">It was good (10%)</option>
-        <option value="amazing">Absolutely amazing! (20%)</option>
+      <label>{children}</label>
+      <select
+        value={percentage}
+        onChange={(e) => onSelect(Number(e.target.value))}
+      >
+        <option value="0">Dissatisfied (0%)</option>
+        <option value="5">It was okay (5%)</option>
+        <option value="10">It was good (10%)</option>
+        <option value="20">Absolutely amazing! (20%)</option>
       </select>
     </div>
   );
 }
+// no longer needed when we use children prop
+// function FriendService() {
+//   return (
+//     <div>
+//       <p>How did your friend like the service?</p>
+//       <label for="service-select"></label>
+//       <select name="pets" id="service-select">
+//         <option value="dissatisfied">Dissatisfied (0%)</option>
+//         <option value="okay">It was okay (5%)</option>
+//         <option value="good">It was good (10%)</option>
+//         <option value="amazing">Absolutely amazing! (20%)</option>
+//       </select>
+//     </div>
+//   );
+// }
 
-function FriendService() {
+function Total({ bill, tip }) {
   return (
     <div>
-      <p>How did your friend like the service?</p>
-      <label for="service-select"></label>
-      <select name="pets" id="service-select">
-        <option value="dissatisfied">Dissatisfied (0%)</option>
-        <option value="okay">It was okay (5%)</option>
-        <option value="good">It was good (10%)</option>
-        <option value="amazing">Absolutely amazing! (20%)</option>
-      </select>
-    </div>
-  );
-}
-
-function Total() {
-  return (
-    <div>
-      <h2>You pay $x</h2>
+      <h2>
+        You pay ${bill} with a {tip}% tip
+      </h2>
     </div>
   );
 }
