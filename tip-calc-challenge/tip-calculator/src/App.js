@@ -16,6 +16,12 @@ function TipCalculator() {
 
   const tip = bill * ((percentage1 + percentage2) / 2 / 100);
 
+  function handleReset() {
+    setBill("");
+    setPercentage1(0);
+    setPercentage2(0);
+  }
+
   return (
     <div>
       <BillInput bill={bill} onSetBill={setBill} />
@@ -26,13 +32,7 @@ function TipCalculator() {
         <p>How did your friend like the service?</p>
       </SelectPercentage>
       <Total bill={bill} tip={tip} />
-      <Reset
-        onReset={() => {
-          setBill("");
-          setPercentage1(0);
-          setPercentage2(0);
-        }}
-      />
+      <Reset onReset={handleReset} />
     </div>
   );
 }
@@ -67,21 +67,6 @@ function SelectPercentage({ children, percentage, onSelect }) {
     </div>
   );
 }
-// no longer needed when we use children prop
-// function FriendService() {
-//   return (
-//     <div>
-//       <p>How did your friend like the service?</p>
-//       <label for="service-select"></label>
-//       <select name="pets" id="service-select">
-//         <option value="dissatisfied">Dissatisfied (0%)</option>
-//         <option value="okay">It was okay (5%)</option>
-//         <option value="good">It was good (10%)</option>
-//         <option value="amazing">Absolutely amazing! (20%)</option>
-//       </select>
-//     </div>
-//   );
-// }
 
 function Total({ bill, tip }) {
   return (
