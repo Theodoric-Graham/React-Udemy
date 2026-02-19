@@ -46,7 +46,7 @@ export default function App() {
 
   function handleSelection(friend) {
     // setSelectedFriend(friend);
-    //optional chaining
+    //optional chaining adding a question mark before the dot to check if the object is null or not
     setSelectedFriend((cur) => (cur?.id === friend.id ? null : friend));
     setShowAddFriend(false);
   }
@@ -87,6 +87,7 @@ function FriendsList({ friends, onSelection, selectedFriend }) {
 }
 
 function Friend({ friend, onSelection, selectedFriend }) {
+  //prop drilling : passing data from parent to child to grandchild and so on
   //checks if you have selected a friend or not , and if you have
   //selected a friend , the selectedFriend changes into the
   //object of your friend from null and than you can fetch the id .
@@ -164,24 +165,40 @@ function FormAddFriend({ onAddFriend }) {
 }
 
 function FormSplitBill({ selectedFriend }) {
+  const [bill, setBill] = useState("");
+  const [paidByUser, setPaidByUser] = useState("");
+  const paidByFriend = bill ? bill - paidByUser : "";
+  const [whoIsPaying, setWhoIsPaying] = useState("user");
+
   return (
     <form className="form-split-bill">
       <h2>Split a Bill with {selectedFriend.name}</h2>
       <label>💸 Bill Value</label>
-      <input type="text"></input>
-
+      <input
+        type="text"
+        value={bill}
+        onChange={(e) => setBill(Number(e.target.value))}
+      ></input>
       <label>🧑 Your expense</label>
-      <input type="text"></input>
-
+      <input
+        type="text"
+        value={paidByUser}
+        onChange={(e) =>
+          setPaidByUser(
+            Number(e.target.value) > bill ? paidByUser : Number(e.target.value),
+          )
+        }
+      ></input>
       <label>👭 {selectedFriend.name}'s expense</label>
-      <input type="text" disabled></input>
-
+      <input type="text" disabled value={paidByFriend}></input>
       <label>🤑 Who is paying the bill</label>
-      <select>
+      <select
+        value={whoIsPaying}
+        onChange={(e) => setWhoIsPaying(e.target.value)}
+      >
         <option value="user">You</option>
         <option value="friend">{selectedFriend.name}</option>
       </select>
-
       <Button>Split bill</Button>
     </form>
   );
